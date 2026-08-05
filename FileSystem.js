@@ -42,3 +42,58 @@ fs.appendFile('FirstFile.txt','\This is an appended text.',(err)=>{
     }
     console.log('Data has been append this file.')
 });
+
+//Append file Sync
+fs.appendFileSync('FirstFile.txt','\n This is appendFile Sync Method');
+console.log('File in add appendFilesync');
+
+
+//
+fs.appendFileSync('FirstFile.txt','\n \n appendFileSync',(err)=>
+{
+    if(err){
+        console.log('Error append this file :',err);
+        return;
+    }
+     console.log('Data has been append this file.');
+})
+
+//unlike 
+
+
+
+//renameSync
+/*
+fs.stat('FirstFile.txt',(err,Stats)=>{
+if(err){
+    console.log('Error getting file stats',err);
+    return;
+}
+console.log('file stats:',stats);
+}
+)*/
+
+//mkdir
+
+fs.mkdir('Firstdir',{recursive:true},(err)=>{
+    if(err){
+        console.log('error making Directory : ',err);
+        return;
+    }
+    console.log(' Dir. Created SuccessFully...');
+});
+
+//remove dir
+/*
+fs.rmdir('Firstdir',{recursive:true},(err)=>{
+    if(err){
+        console.log('error making Directory : ',err);
+        return;
+    }
+    console.log(' Dir. deleted SuccessFully...');
+});*/
+
+//ReadDirsync
+
+const f1=fs.readdir('Firstdir');
+console.log('Directory Content :',f1);
