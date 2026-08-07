@@ -1,4 +1,4 @@
 This is my First Node File add readfile concept ,add file sync concept 
- This is appendFile Sync Method
+ This is appendFile Sync MethodThis is an appended text.
+ new content add
  
- appendFileSync

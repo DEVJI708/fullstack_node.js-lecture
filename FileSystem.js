@@ -47,7 +47,7 @@ fs.appendFile('FirstFile.txt','\This is an appended text.',(err)=>{
 fs.appendFileSync('FirstFile.txt','\n This is appendFile Sync Method');
 console.log('File in add appendFilesync');
 
-
+/*
 //
 fs.appendFileSync('FirstFile.txt','\n \n appendFileSync',(err)=>
 {
@@ -63,7 +63,7 @@ fs.appendFileSync('FirstFile.txt','\n \n appendFileSync',(err)=>
 
 
 //renameSync
-/*
+
 fs.stat('FirstFile.txt',(err,Stats)=>{
 if(err){
     console.log('Error getting file stats',err);
@@ -71,7 +71,7 @@ if(err){
 }
 console.log('file stats:',stats);
 }
-)*/
+)
 
 //mkdir
 
@@ -84,16 +84,42 @@ fs.mkdir('Firstdir',{recursive:true},(err)=>{
 });
 
 //remove dir
-/*
+
 fs.rmdir('Firstdir',{recursive:true},(err)=>{
     if(err){
         console.log('error making Directory : ',err);
         return;
     }
     console.log(' Dir. deleted SuccessFully...');
-});*/
+});
 
 //ReadDirsync
 
 const f1=fs.readdir('Firstdir');
 console.log('Directory Content :',f1);
+*/
+
+//07/08/2026
+//watch =  asynchronous method to watch for changes in a file or directory (testing purpose)
+//syntax = fs.watch(filename,option,listener) 
+//unwatch = Asynchronous method to stop watching for changes.(testing purpose)
+//syntax = fs.watch(filename,listener) 
+
+const watcher = fs.watch('FirstFile.txt',(evenType,filename)=>{
+    if(evenType === 'change')
+    {
+        console.log("File  has been changed"); 
+    }
+     if(evenType === 'rename')
+    {
+        console.log("File  has been rename");
+    }
+     if(evenType === 'delete')
+    {
+        console.log("File ${filename} has been deleted"); 
+    }
+    setTimeout(()=>{
+        fs.unwatchFile('FirstFile.txt');
+        console.log('Stop Watching For changes');
+    },1000)
+})
